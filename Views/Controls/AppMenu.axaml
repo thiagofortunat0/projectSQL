@@ -1,0 +1,165 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SQLstudio.Views.Controls.AppMenu">
+
+
+    <Menu>
+        <MenuItem Header="_File">
+            <MenuItem Header="Open file" InputGesture="Ctrl + O">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="New" InputGesture="Ctrl + N">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Save" InputGesture="Ctrl + S">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Save As">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Save All" InputGesture="Ctrl + Shift + S">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Close" InputGesture="Ctrl + W">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Print" InputGesture="Ctrl + P">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Rename" InputGesture="F2">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Refresh" InputGesture="F5">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="Import">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Export">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="Properties" InputGesture="Alt + Enter">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Exit" />
+        </MenuItem>
+
+        <MenuItem Header="Edit">
+            <MenuItem Header="Undo" InputGesture="Ctrl + Z">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Redo" InputGesture="Ctrl + Y">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Cut" InputGesture="Ctrl + X">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Copy" InputGesture="Ctrl + C">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header=" Advanced Copy" InputGesture="Ctrl + Shift + C"/>
+            <MenuItem Header="Paste" InputGesture="Ctrl + V">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Delete" InputGesture="Delete">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Generate UUID" InputGesture="Ctrl + Alt + Shift + U">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </MenuItem>
+
+        <MenuItem Header="Navigate">
+            <MenuItem Header="Previous Edit Location" InputGesture="Ctrl + Alt + Left">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Next Edit Location" InputGesture="Ctrl + Alt + Right">
+                <MenuItem.Icon>
+                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Data"/>
+            <MenuItem Header="Open Database Object" InputGesture="Ctrl + Shift + D"/>
+            <MenuItem Header="Open Resource" InputGesture="Ctrl + Shift + R"/>
+            <Separator />
+            <MenuItem Header="Backward History" InputGesture="Alt + Left"/>
+            <MenuItem Header="Forward History" InputGesture="Alt + Right"/>
+        </MenuItem>
+
+        <MenuItem Header="Search">
+            <MenuItem Header="Search" InputGesture="Ctrl + H">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="File...">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="DB Metadata">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="DB Full-Text">
+                <MenuItem.Icon>
+                    <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Text"/>
+            <MenuItem Header="Quick Search" InputGesture="Ctrl + Alt + Shift + F"/>
+        </MenuItem>
+
+        <MenuItem Header="_SQL Editor">
+            <MenuItem></MenuItem>
+        </MenuItem>
+    </Menu>
+</UserControl>
