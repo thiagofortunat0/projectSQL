@@ -5,6 +5,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SQLstudio.Views.Controls.AppMenu">
 
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/AppMenuStyles.axaml"/>
+    </UserControl.Styles>
 
     <Menu>
         <MenuItem Header="_File">
@@ -73,7 +76,7 @@
             <MenuItem Header="Exit" />
         </MenuItem>
 
-        <MenuItem Header="Edit">
+        <MenuItem Header="_Edit">
             <MenuItem Header="Undo" InputGesture="Ctrl + Z">
                 <MenuItem.Icon>
                     <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
@@ -113,7 +116,7 @@
             </MenuItem>
         </MenuItem>
 
-        <MenuItem Header="Navigate">
+        <MenuItem Header="_Navigate">
             <MenuItem Header="Previous Edit Location" InputGesture="Ctrl + Alt + Left">
                 <MenuItem.Icon>
                     <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
@@ -124,7 +127,9 @@
                     <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Data"/>
+            <MenuItem Header="Data">
+               <MenuItem Header="Active filter/data editor" InputGesture="Ctrl + Alt + Shift + T"/>
+            </MenuItem>
             <MenuItem Header="Open Database Object" InputGesture="Ctrl + Shift + D"/>
             <MenuItem Header="Open Resource" InputGesture="Ctrl + Shift + R"/>
             <Separator />
@@ -132,7 +137,7 @@
             <MenuItem Header="Forward History" InputGesture="Alt + Right"/>
         </MenuItem>
 
-        <MenuItem Header="Search">
+        <MenuItem Header="_Search">
             <MenuItem Header="Search" InputGesture="Ctrl + H">
                 <MenuItem.Icon>
                     <Image Classes="menu-item" Source="/Assets/Icons/barca.png" />
@@ -154,12 +159,348 @@
                 </MenuItem.Icon>
             </MenuItem>
             <Separator />
-            <MenuItem Header="Text"/>
+            <MenuItem Header="Text">
+                <MenuItem Header="Workspace" InputGesture="Ctrl + Alt + G"/>
+                <MenuItem Header="Project" />
+                <MenuItem Header="File"/>
+                <MenuItem Header="Working Set"/>
+            </MenuItem>
             <MenuItem Header="Quick Search" InputGesture="Ctrl + Alt + Shift + F"/>
         </MenuItem>
 
-        <MenuItem Header="_SQL Editor">
-            <MenuItem></MenuItem>
+        <MenuItem Header="S_QL Editor">
+
+            <MenuItem Header="Open SQL Script" InputGesture="F3">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Last edited SQL Script">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="New SQL Script" InputGesture="Ctrl + OemCloseBrackets">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Open SQL console">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Panels">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+                <MenuItem Header="Show server output" IsEnabled="False" />
+                <MenuItem Header="Show execution log" IsEnabled="False" />
+                <MenuItem Header="Show SQL variables" IsEnabled="False" />
+                <MenuItem Header="Toggle outline" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Show panels in result tabs"
+                          ToggleType="CheckBox"
+                          IsChecked="True"
+                          IsEnabled="False" />
+            </MenuItem>
+
+            <MenuItem Header="Layout">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+                <MenuItem Header="Show multiple results in a single tab"
+                          ToggleType="CheckBox"
+                          IsChecked="True"
+                          IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Toggle results panel" IsEnabled="False" />
+                <MenuItem Header="Maximize results panel" IsEnabled="False" />
+                <MenuItem Header="Switch active panel" IsEnabled="False" />
+            </MenuItem>
+
+            <MenuItem Header="Context">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+                <MenuItem Header="Select active schema" />
+                <MenuItem Header="Set connection from navigator" IsEnabled="False" />
+                <MenuItem Header="Refresh current schema" IsEnabled="False" />
+                <MenuItem Header="Refresh all schemas" IsEnabled="False" />
+            </MenuItem>
+
+            <MenuItem Header="Auto-sync connection with navigator">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Open separate connection">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+                <MenuItem Header="Always"
+                          ToggleType="Radio"
+                          GroupName="OpenSeparateConnection" />
+                <MenuItem Header="Default"
+                          ToggleType="Radio"
+                          GroupName="OpenSeparateConnection"
+                          IsChecked="True" />
+                <MenuItem Header="Never"
+                          ToggleType="Radio"
+                          GroupName="OpenSeparateConnection" />
+            </MenuItem>
+        </MenuItem>
+
+        <MenuItem Header="_Database">
+            <MenuItem Header="New Database Connection" InputGesture="Ctrl+Shift+N">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="New Connection from JDBC URL">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Drive Manager">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Connection">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Invalidate/Reconnect">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Disconnect">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Disconnect All">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Disconnect Others">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Commit" InputGesture="Ctrl+ Alt+ Shift+ K">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Rollback" InputGesture="Ctrl+ Alt+Shift+R">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Transaction mode">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Transaction log">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Pending transactions">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Read-only">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Open Dashboard" InputGesture="Ctrl + Alt + Shift+B">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Context tools" InputGesture="Alt + OemTilde">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Tasks">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </MenuItem>
+
+        <MenuItem Header="_Window">
+            <MenuItem Header="Open in New Window">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Editor">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Appearence">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Connections">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Projects">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Files">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Database Tasks">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Show View">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Costumize Perspective">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Reset Perspective">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Navigation">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Preferences">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </MenuItem>
+
+        <MenuItem Header="_Help">
+            <MenuItem Header="About">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Help Contents">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Installation Information">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Create Sample Database">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator/>
+
+            <MenuItem Header="Show Active Keybindings..." InputGesture="Ctrl + Shift + L">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Check for Updates">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Install new Software">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <Separator />
+
+            <MenuItem Header="Collect Diagnostic Info">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Reset Settings">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Clear History">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/Icons/barca.png" Classes="menu-icon" />
+                </MenuItem.Icon>
+            </MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

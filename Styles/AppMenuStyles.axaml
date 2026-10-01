@@ -1,0 +1,97 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Styles.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="MenuFlyoutPresenterBackground" Color="#202020" />
+
+            <SolidColorBrush x:Key="MenuFlyouPresenterBorderBrush" Color="#3A3A3A"/>
+
+            <Thickness x:Key="MenuFlyoutPresenterBorderThemeThickness">
+                1
+            </Thickness>
+
+            <SolidColorBrush x:Key="MenuFlyoutItemBackground" Color="Transparent"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemForeground" Color="#E8E8E8"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemBackgorundPointerOver" Color="#2D4F73"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundPointerOver" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemBackgroundPressed" Color="#355F8A"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundPressed" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemBackgorundDisabled" Color="Transparent" />
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundDisabled" Color="#666666" />
+
+            <SolidColorBrush x:Key="MenuFlyoutItemKeyboardAcceleratorTextForeground" Color="#9DA5B1" />
+            <SolidColorBrush x:Key="MenuFlyoutItemKeyboardAccelaratorTextForegroundPointerOver" Color="#D8DEE9" />
+            <SolidColorBrush x:Key="MenuFlyoutItemKeyboardAcceleratorTextForegroundPressed" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="MenuFlyoutItemKeyboardAcceleratorTextForegroundDisabled" Color="#606060" />
+
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevron" Color="#AEB6C3"/>
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronPressed" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronMenuOpened" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronDisabled" Color="#606060" />
+
+            <Thickness x:Key="MenuBarItemPadding">
+                10,0
+            </Thickness>
+
+            <Thickness x:Key="MenuFlyoutItemThemePaddingNarrow">
+                10, 6
+            </Thickness>
+
+            <Thickness x:Key="MenuFlyoutSeparatorPadding">
+                10, 4
+            </Thickness>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Style Selector="Menu">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Background" Value="#181818"/>
+        <Setter Property="Foreground" Value="#E8E8E8" />
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style Selector="MenuItem">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="CornerRadius" Value="3"/>
+    </Style>
+
+    <Style Selector="Separator">
+        <Setter Property="Background" Value="#3A3A3A"/>
+    </Style>
+
+    <Style Selector="Image.menu-icon, Image.menu-item">
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Opacity" Value="0.9"/>
+    </Style>
+
+    <Style Selector="MenuItem /template/ Path#PART_ChevronPath">
+        <Setter Property="RenderTransformOrigin" Value="50%, 50%"/>
+        <Setter Property="RenderTransform">
+            <ScaleTransform ScaleX="0.625" ScaleY="0.625"/>
+        </Setter>
+    </Style>
+
+    <Style Selector="MenuItem:checked:toggle /template/ ContentControl#PART_ToggleIconPresenter">
+        <Setter Property="RenderTransformOrigin" Value="50%, 50%" />
+        <Setter Property="RenderTransform">
+            <ScaleTransform ScaleX="0.625" ScaleY="0.625" />
+        </Setter>
+    </Style>
+
+    <Style Selector="AccessText">
+        <Setter Property="ShowAccessKey" Value="True"/>
+    </Style>
+</Styles>
