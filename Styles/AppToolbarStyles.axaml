@@ -1,0 +1,161 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Styles.Resources>
+        <SolidColorBrush x:Key="ToolbarBackground" Color="#1B1B1C"/>
+        <SolidColorBrush x:Key="ToolbarForeground" Color="#E8E8E8" />
+        <SolidColorBrush x:Key="ToolbarSecondaryForeground" Color="#AEB6C3"/>
+        <SolidColorBrush x:Key="ToolbarBorder" Color="#3A3A3A" />
+        <SolidColorBrush x:Key="ToolbarControlBackground" Color="#202020" />
+        <SolidColorBrush x:Key="ToolbarButtonHover" Color="#2D2D30" />
+        <SolidColorBrush x:Key="ToolbarButtonPressed" Color="#3E3E42"/>
+        <SolidColorBrush x:Key="ToolbarAccent" Color="#168CFF" />
+    </Styles.Resources>
+
+    <Style Selector="Border.divider">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Background" Value="#3A3A3A" />
+        <Setter Property="Margin" Value="8,0" />
+    </Style>
+
+    <Style Selector="Border.toolbar-root">
+        <Setter Property="Background" Value="{StaticResource ToolbarBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ToolbarBorder}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="8,0"/>
+        <Setter Property="MinHeight" Value="40"/>
+    </Style>
+
+    <Style Selector="Button /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="3"/>
+    </Style>
+
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonHover}"/>
+    </Style>
+
+    <Style Selector="Button:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonPressed}" />
+    </Style>
+
+    <Style Selector="Button:disabled">
+        <Setter Property="Background" Value="#686868"/>
+        <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+
+    <Style Selector="StackPanel.toolbar-actions">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="1" />
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="34" />
+        <Setter Property="MinWidth" Value="34"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource ToolbarForeground}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="Padding" Value="9,0" />
+        <Setter Property="Margin" Value="1,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="SplitButton">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="34" />
+        <Setter Property="MinWidth" Value="34"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource ToolbarForeground}" />
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="Padding" Value="9,0" />
+        <Setter Property="Margin" Value="1,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split:pointerover /template/ Button#PART_PrimaryButton">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonHover}" />
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split:pointerover /template/ Button#PART_SecondaryButton /template/ ContentPresenter">
+        <Setter Property="Background" Value="#173B5C" />
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split /template/ Border#SeparatorBorder">
+        <Setter Property="Width" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split /template/ Button#PART_PrimaryButton">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split /template/ Button#PART_SecondaryButton">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split /template/ Button#PART_SecondaryButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#173B5C" />
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split /template/ Button#PART_PrimaryButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonPressed}" />
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split:flyout-open /template/ Button#PART_PrimaryButton">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonPressed}"/>
+    </Style>
+
+    <Style Selector="SplitButton.toolbar-split:flyout-open /template/ Button#PART_SecondaryButton">
+        <Setter Property="Background" Value="{StaticResource ToolbarButtonPressed}" />
+    </Style>
+
+    <Style Selector=".toolbar-button-content Image">
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Opacity" Value="0.95"/>
+    </Style>
+
+    <Style Selector=".toolbar-button-content TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontStyle" Value="Normal"/>
+        <Setter Property="LineHeight" Value="16"/>
+        <Setter Property="Foreground"
+                Value="{StaticResource ToolbarForeground}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Button TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource ToolbarForeground}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="StackPanel.toolbar-button-content">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="6"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+</Styles>

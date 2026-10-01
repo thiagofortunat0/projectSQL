@@ -84,6 +84,10 @@
                         BorderThickness="0,0,0,1">
                     <controls:AppMenu />
                 </Border>
+
+                <Grid Grid.Row="2">
+                    <controls:AppToolbar />
+                </Grid>
             </Grid>
         </Border>
 
