@@ -1,83 +1,101 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="SQLstudio.Views.Controls.AppToolbar">
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:SQLstudio.ViewModels"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="SQLstudio.Views.Controls.AppToolbar"
+			 x:DataType="vm:MainViewModel">
 
-    <UserControl.Styles>
-        <StyleInclude Source="/Styles/AppToolbarStyles.axaml" />
-        <StyleInclude Source="/Styles/AppMenuStyles.axaml" />
-    </UserControl.Styles>
+	<UserControl.Styles>
+		<StyleInclude Source="/Styles/AppToolbarStyles.axaml" />
+		<StyleInclude Source="/Styles/AppMenuStyles.axaml" />
+	</UserControl.Styles>
 
-    <Border Classes="toolbar-root">
-        <Grid ColumnDefinitions="Auto, Auto, *, Auto">
-            <StackPanel Grid.Column="0" Classes="toolbar-actions">
-                <Button>
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png"/>
-                        <TextBlock Text="Connection"/>
-                    </StackPanel>
-                </Button>
+	<Border Classes="toolbar-root">
+		<Grid>
+			<StackPanel Classes="toolbar-actions">
+				<Button>
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png"/>
+						<TextBlock Text="Connection"/>
+					</StackPanel>
+				</Button>
 
-                <Border Classes="divider"/>
+				<Border Classes="divider"/>
 
-                <Button>
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png" />
-                        <TextBlock Text="Connect"/>
-                    </StackPanel>
-                </Button>
-                <Button>
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png" />
-                        <TextBlock Text="Disconnect"/>
-                    </StackPanel>
-                </Button>
+				<Button>
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png" />
+						<TextBlock Text="Connect"/>
+					</StackPanel>
+				</Button>
+				<Button>
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png" />
+						<TextBlock Text="Disconnect"/>
+					</StackPanel>
+				</Button>
 
-                <Button>
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png"/>
-                        <TextBlock Text="Refresh"/>
-                    </StackPanel>
-                </Button>
+				<Button>
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png"/>
+						<TextBlock Text="Refresh"/>
+					</StackPanel>
+				</Button>
 
-                <Border Classes="divider"/>
+				<Border Classes="divider"/>
 
-                <SplitButton Classes="toolbar-split">
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png"/>
-                        <TextBlock Text="New SQL" />
-                    </StackPanel>
+				<SplitButton Classes="toolbar-split">
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png"/>
+						<TextBlock Text="New SQL" />
+					</StackPanel>
 
-                    <SplitButton.Flyout>
-                        <MenuFlyout>
-                            <MenuItem Header="New Querry" />
-                            <MenuItem Header="New Script" />
+					<SplitButton.Flyout>
+						<MenuFlyout>
+							<MenuItem Header="New Querry" />
+							<MenuItem Header="New Script" />
 
-                            <Separator />
-                            <MenuItem Header="New SQL in new connection" />
-                        </MenuFlyout>
-                    </SplitButton.Flyout>
-                </SplitButton>
+							<Separator />
+							<MenuItem Header="New SQL in new connection" />
+						</MenuFlyout>
+					</SplitButton.Flyout>
+				</SplitButton>
 
-                <SplitButton Classes="toolbar-split">
-                    <StackPanel Classes="toolbar-button-content">
-                        <Image Source="/Assets/Icons/barca.png" />
-                        <TextBlock Text="Open SQL" />
-                    </StackPanel>
+				<SplitButton Classes="toolbar-split">
+					<StackPanel Classes="toolbar-button-content">
+						<Image Source="/Assets/Icons/barca.png" />
+						<TextBlock Text="Open SQL" />
+					</StackPanel>
 
-                    <SplitButton.Flyout>
-                        <MenuFlyout>
-                            <MenuItem Header="Last SQL edited script" />
-                            <MenuItem Header="Show Scripts" />
-                            <MenuItem Header="Open SQL console" />
-                        </MenuFlyout>
-                    </SplitButton.Flyout>
-                </SplitButton>
+					<SplitButton.Flyout>
+						<MenuFlyout>
+							<MenuItem Header="Last SQL edited script" />
+							<MenuItem Header="Show Scripts" />
+							<MenuItem Header="Open SQL console" />
+						</MenuFlyout>
+					</SplitButton.Flyout>
+				</SplitButton>
 
-                <Border Classes="divider" />
-            </StackPanel>
-        </Grid>
-    </Border>
+				<Border Classes="divider" />
+
+				<StackPanel Classes="auto-commit-control">
+					<TextBlock Text="Auto Commit" Classes="auto-commit-label"/>
+
+					<ToggleButton Classes="auto-commit-switch"
+								  IsChecked="{Binding IsAutoCommitEnabled, Mode=TwoWay}"
+								  ToolTip.Tip="Ativar ou desativar o Auto Commit" />
+				</StackPanel>
+
+				<Border Classes="divider" />
+
+				<ComboBox SelectedIndex="0" Classes="toolbar-combobox">
+					<ComboBoxItem Content="localhost" />
+					<ComboBoxItem Content="producao"/>
+					<ComboBoxItem Content="servidor-dev"/>
+				</ComboBox>
+			</StackPanel>
+		</Grid>
+	</Border>
 </UserControl>
