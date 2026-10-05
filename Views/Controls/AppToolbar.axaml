@@ -14,7 +14,16 @@
 
 	<Border Classes="toolbar-root">
 		<Grid>
-			<StackPanel Classes="toolbar-actions">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="2*"
+								  MinWidth="213"
+								  MaxWidth="353"/>
+				<ColumnDefinition Width="*"
+								  MinWidth="80"/>
+			</Grid.ColumnDefinitions>
+			<StackPanel Grid.Column="0" Classes="toolbar-actions">
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
 						<Image Source="/Assets/Icons/barca.png"/>
@@ -23,7 +32,9 @@
 				</Button>
 
 				<Border Classes="divider"/>
+			</StackPanel>
 
+			<StackPanel Grid.Column="1" Orientation="Horizontal">
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
 						<Image Source="/Assets/Icons/barca.png" />
@@ -89,13 +100,46 @@
 				</StackPanel>
 
 				<Border Classes="divider" />
+			</StackPanel>
 
-				<ComboBox SelectedIndex="0" Classes="toolbar-combobox">
+			<Grid Grid.Column="2"  
+				  ColumnSpacing="8" 
+				  HorizontalAlignment="Stretch"
+				  ColumnDefinitions="*,*,Auto">
+				
+				<Grid.Resources>
+					<SolidColorBrush x:Key="ComboBoxDropDownBackground"
+									 Color="#202020"/>
+				</Grid.Resources>
+
+				<ComboBox SelectedIndex="0" 
+						  Classes="toolbar-combobox"
+						  Grid.Column="0">
 					<ComboBoxItem Content="localhost" />
 					<ComboBoxItem Content="producao"/>
 					<ComboBoxItem Content="servidor-dev"/>
 				</ComboBox>
-			</StackPanel>
+
+				<ComboBox SelectedIndex="0" Classes="toolbar-combobox"
+						  Grid.Column="1">
+					<ComboBoxItem Content="Sakila" />
+					<ComboBoxItem Content="Teste" />
+					<ComboBoxItem Content="DbTeste" />
+				</ComboBox>
+
+				<Border Classes="divider" Grid.Column="2"/>
+			</Grid>
+
+			<Border Grid.Column="3" Classes="search-border" >
+				<Grid>
+					<TextBox Grid.Column="1"
+							 PlaceholderText="Search"
+							 Classes="toolbar-textbox"/>
+					<Image Source="/Assets/Icons/barca.png" Classes="image-search"
+						   Grid.Column="0" Width="16" Height="16"/>
+
+				</Grid>
+			</Border>
 		</Grid>
 	</Border>
 </UserControl>
