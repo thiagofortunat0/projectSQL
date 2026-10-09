@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pia="using:PhosphorIconsAvalonia.Markup"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -16,64 +17,67 @@
         <MenuItem Header="_File">
             <MenuItem Header="Open file" InputGesture="Ctrl + O">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=folder_open}" 
+                              Classes="menu-icon"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="New" InputGesture="Ctrl + N">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=file_sql}"
+                              Classes="menu-icon"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Save" InputGesture="Ctrl + S">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=floppy_disk}"
+                              Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Save As">
-                <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Save All" InputGesture="Ctrl + Shift + S">
-                <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
-                </MenuItem.Icon>
-            </MenuItem>
+            <MenuItem Header="Save As" />
+
+            <MenuItem Header="Save All" InputGesture="Ctrl + Shift + S" />
+
             <MenuItem Header="Close" InputGesture="Ctrl + W">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                     <PathIcon Data="{pia:IconGeometry Icon=x}"
+                               Classes="menu-icon" Foreground="red"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Print" InputGesture="Ctrl + P">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=printer}" Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Rename" InputGesture="F2">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=pencil_simple_line}"
+                              Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Refresh" InputGesture="F5">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=arrows_counter_clockwise}"
+                              Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
             <Separator />
             <MenuItem Header="Import">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=download_simple}"
+                              Classes="menu-icon"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Export">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=upload_simple}"
+                              Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
             <Separator />
             <MenuItem Header="Properties" InputGesture="Alt + Enter">
                 <MenuItem.Icon>
-                    <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
+                    <PathIcon Data="{pia:IconGeometry Icon=gear}"
+                              Classes="menu-icon" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Exit" />

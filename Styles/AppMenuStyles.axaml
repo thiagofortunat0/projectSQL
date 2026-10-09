@@ -76,6 +76,12 @@
         <Setter Property="Opacity" Value="0.9" />
     </Style>
 
+    <Style Selector="PathIcon.menu-icon">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Opacity" Value="0.9" />
+    </Style>
+
     <Style Selector="MenuItem /template/ Path#PART_ChevronPath">
         <Setter Property="RenderTransformOrigin" Value="50%, 50%" />
         <Setter Property="RenderTransform">

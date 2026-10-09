@@ -3,6 +3,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:vm="using:SQLstudio.ViewModels"
+			 xmlns:pia="using:PhosphorIconsAvalonia.Markup"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:Class="SQLstudio.Views.Controls.AppToolbar"
 			 x:DataType="vm:MainViewModel">
@@ -26,8 +27,9 @@
 			<StackPanel Grid.Column="0" Classes="toolbar-actions">
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png"/>
-						<TextBlock Text="Connection"/>
+						<PathIcon Data="{pia:IconGeometry Icon=plus, IconType=regular}"
+								  Foreground="#4DA3FF" Classes="icons-phos"/>
+						<TextBlock Text="New connection"/>
 					</StackPanel>
 				</Button>
 
@@ -37,20 +39,22 @@
 			<StackPanel Grid.Column="1" Orientation="Horizontal">
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png" />
+						<PathIcon Data="{pia:IconGeometry Icon=plugs_connected}" Foreground="#59C98A" Classes="icons-phos"/>
 						<TextBlock Text="Connect"/>
 					</StackPanel>
 				</Button>
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png" />
+						<PathIcon Data="{pia:IconGeometry Icon=plugs}" Classes="icons-phos" 
+								  Foreground="#E06C75"/>
 						<TextBlock Text="Disconnect"/>
 					</StackPanel>
 				</Button>
 
 				<Button>
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png"/>
+						<PathIcon Data="{pia:IconGeometry Icon=arrows_counter_clockwise}"
+								  Classes="icons-phos" />
 						<TextBlock Text="Refresh"/>
 					</StackPanel>
 				</Button>
@@ -59,7 +63,7 @@
 
 				<SplitButton Classes="toolbar-split">
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png"/>
+						<PathIcon Data="{pia:IconGeometry Icon=file_plus}" Classes="icons-phos" />
 						<TextBlock Text="New SQL" />
 					</StackPanel>
 
@@ -76,7 +80,7 @@
 
 				<SplitButton Classes="toolbar-split">
 					<StackPanel Classes="toolbar-button-content">
-						<Image Source="/Assets/Icons/barca.png" />
+						<PathIcon Data="{pia:IconGeometry Icon=file_sql}" Classes="icons-phos" />
 						<TextBlock Text="Open SQL" />
 					</StackPanel>
 
@@ -132,11 +136,10 @@
 
 			<Border Grid.Column="3" Classes="search-border" >
 				<Grid>
-					<TextBox Grid.Column="1"
-							 PlaceholderText="Search"
+					<TextBox PlaceholderText="Search"
 							 Classes="toolbar-textbox"/>
-					<Image Source="/Assets/Icons/barca.png" Classes="image-search"
-						   Grid.Column="0" Width="16" Height="16"/>
+					<PathIcon Data="{pia:IconGeometry Icon=magnifying_glass}"
+							  Classes="icon-search" />
 
 				</Grid>
 			</Border>
