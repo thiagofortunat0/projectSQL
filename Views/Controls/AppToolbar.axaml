@@ -130,8 +130,6 @@
 					<ComboBoxItem Content="Teste" />
 					<ComboBoxItem Content="DbTeste" />
 				</ComboBox>
-
-				<Border Classes="divider" Grid.Column="2"/>
 			</Grid>
 
 			<Border Grid.Column="3" Classes="search-border" >

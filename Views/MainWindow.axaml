@@ -148,7 +148,7 @@
             </Border>
 
             <Border Grid.Column="1">
-
+                <controls:NoDatabaseConnected HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Border>
         </Grid>
     </Grid>

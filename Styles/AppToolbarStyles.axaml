@@ -36,7 +36,7 @@
     <Style Selector="Border.toolbar-root">
         <Setter Property="Background" Value="{StaticResource ToolbarBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource ToolbarBorder}" />
-        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
         <Setter Property="Padding" Value="8,0" />
         <Setter Property="MinHeight" Value="40" />
     </Style>

@@ -1,0 +1,54 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Styles.Resources>
+        <SolidColorBrush x:Key="MainText" Color="#E8E8E8" />
+        <SolidColorBrush x:Key="SecondaryText" Color="#9DA5B1" />
+        <SolidColorBrush x:Key="ButtonColor" Color="#0073FE" />
+        <SolidColorBrush x:Key="ForegroundButton" Color="#FFFFFF"/>
+    </Styles.Resources>
+
+    <!-- Add Styles Here -->
+    <Style Selector="TextBlock.main">
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource MainText}" />
+    </Style>
+
+    <Style Selector="TextBlock.secondary">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryText}" />
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Margin" Value="0,13,0,0"/>
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Background" Value="{StaticResource ButtonColor}" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundButton}" />
+    </Style>
+
+    <Style Selector="Button Grid">
+        <Setter Property="Margin" Value="8, 4" />
+    </Style>
+
+    <Style Selector="Button TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource ForegroundButton}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button PathIcon">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundButton}" />
+    </Style>
+</Styles>
