@@ -25,7 +25,7 @@
 								  MinWidth="80"/>
 			</Grid.ColumnDefinitions>
 			<StackPanel Grid.Column="0" Classes="toolbar-actions">
-				<Button>
+				<Button Click="OpenNewConnection_Click">
 					<StackPanel Classes="toolbar-button-content">
 						<PathIcon Data="{pia:IconGeometry Icon=plus, IconType=regular}"
 								  Foreground="#4DA3FF" Classes="icons-phos"/>

@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SQLstudio.Views.Controls.WindowControls">
+
+    <Border BorderBrush="#3A3A3A" BorderThickness="0,0,0,1"
+            WindowDecorationProperties.ElementRole="TitleBar"
+            Background="#181818">
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8"
+              Margin="10,0,0,0">
+            <TextBlock Text="ginseng strip 2002" Foreground="White"
+                       VerticalAlignment="Center" FontSize="14"
+                       FontWeight="Light"
+                       Grid.Column="1"/>
+            <Image Grid.Column="0"
+                   Source="/Assets/Icons/barca.png"
+                   VerticalAlignment="Center"
+                   Width="21"
+                   Height="21"/>
+        </Grid>
+    </Border>
+
+
+</UserControl>

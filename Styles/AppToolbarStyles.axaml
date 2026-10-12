@@ -283,6 +283,7 @@
 
     <Style Selector="Border.search-border:pointerover">
         <Setter Property="Background" Value="{StaticResource ToolbarButtonHover}" />
+        <Setter Property="Cursor" Value="Ibeam" />
     </Style>
 
     <!-- Dimensao dos icons -->
