@@ -2,14 +2,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="using:SQLstudio.Models"
         xmlns:chrome="using:Avalonia.Controls.Chrome"
         xmlns:controls="using:SQLstudio.Views.Controls"
         xmlns:pia="using:PhosphorIconsAvalonia.Markup"
+        xmlns:vm="using:SQLstudio.ViewModels"
         mc:Ignorable="d"
         x:Class="SQLstudio.Views.NewConnectionWindow"
+        x:DataType="vm:NewConnectionViewModel"
         Title="New connection"
         Width="580"
-        Height="640"
+        SizeToContent="Height"
         CanResize="False"
         Background="#1E1E1E"
         ExtendClientAreaToDecorationsHint="True"
@@ -22,13 +25,13 @@
         <StyleInclude Source="/Styles/NewConnectionWindowStyles.axaml" />
     </Window.Styles>
 
-    <Grid RowDefinitions="30, *">
+    <Grid RowDefinitions="30, Auto">
         <Grid Grid.Row="0">
             <controls:WindowControls />
         </Grid>
 
-        <Grid Grid.Row="1" Margin="30, 28">
-            <StackPanel>
+        <Grid Grid.Row="1">
+            <StackPanel IsVisible="{Binding IsSelectingDatabase}" Margin="30,20">
                 <TextBlock Text="New connection" Classes="mainText"/>
                 <TextBlock Text="Choose a database to connect" Classes="secondaryText"/>
 
@@ -48,6 +51,172 @@
                     <TabStripItem Content="NoSQL" />
                     <TabStripItem Content="All" />
                 </TabStrip>
+
+                <ListBox Classes="databaseGrid"
+                         ItemsSource="{Binding Databases}"
+                         SelectedItem="{Binding SelectedDatabase, Mode=TwoWay}"
+                         Margin="0,10,0,0">
+
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:DatabaseOptions">
+                            <Grid RowDefinitions="*, Auto">
+                                <Image Source="{Binding IconPath}"
+                                       Width="64"
+                                       Height="52"
+                                       Margin="12,14,12,6"
+                                       Stretch="Uniform"/>
+
+                                <TextBlock Grid.Row="1" Text="{Binding DisplayName}"
+                                           Margin="8,0,8,12"
+                                           HorizontalAlignment="Center"
+                                           Foreground="#ECECEC"
+                                           FontSize="13"/>
+
+                                <Border Classes="selectionBadge" Width="18"
+                                        Height="18" Margin="6"
+                                        CornerRadius="9" Background="#168FFF"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top" IsVisible="False">
+                                    <TextBlock Text="✓" Foreground="White"
+                                               FontSize="11"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                            HorizontalAlignment="Right" Spacing="8" Margin="0,20,0,0">
+                    <Button Content="Cancel" Classes ="dialogButton cancelButton" Click="CancelButton_Click"/>
+                    <Button Content="Next &gt;"
+                            Classes="dialogButton nextButton" Command="{Binding NextCommand}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel IsVisible="{Binding IsConfiguringConnection}">
+                <Grid ColumnDefinitions="Auto, Auto"
+                      ColumnSpacing="8" HorizontalAlignment="Left"
+                      Margin="30,10,30,0">
+                    <Image Source="{Binding IconDb}" Width="60" Height="70" Grid.Column="0"
+                           VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding ConnectionTitle}" Classes="mainText"/>
+                        <TextBlock Text="Enter the information required to connect" Classes="secondaryText"/>
+                    </StackPanel>
+                </Grid>
+
+                <Border Classes="divider"/>
+
+                <StackPanel Margin="30,10, 30,0" Spacing="12">
+                    <StackPanel IsVisible="{Binding UsesServer}" Spacing="12">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="Connect by:"
+                                       Classes="formLabel"
+                                       VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Spacing="8"
+                                        Margin="8,0,0,0" VerticalAlignment="Center">
+                                <RadioButton Content="Host"
+                                             GroupName="ConnectionMode"
+                                             IsChecked="{Binding ConnectByHost, Mode=TwoWay}"/>
+                                <RadioButton Content="URL"
+                                             GroupName="ConnectionMode"
+                                             IsChecked="{Binding ConnectByUrl, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel IsVisible="{Binding IsUrlConnection}">
+                            <TextBlock Text="URL" Classes="formLabel" />
+                            <TextBox Text="{Binding Url}" PlaceholderText="thiago:fortunato://localhost:3306/"
+                                     Classes="connectionInput"/>
+                        </StackPanel>
+                        <Grid ColumnDefinitions="*, 130" IsVisible="{Binding IsHostConnection}">
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Host" Classes="formLabel"/>
+                                <TextBox Text="{Binding Host}"
+                                         Classes="connectionInput"
+                                         PlaceholderText="localhost"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Port" Classes="formLabel" />
+                                <TextBox Text="{Binding Port}" PlaceholderText="5432" Classes="connectionInput"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel IsVisible="{Binding UsesDatabaseName}">
+                            <TextBlock Text="Database" Classes="formLabel" />
+                            <TextBox Text="{Binding DatabaseName}" PlaceholderText="Database name"
+                                     Classes="connectionInput"/>
+                        </StackPanel>
+
+                        <StackPanel IsVisible="{Binding IsOracle}">
+                            <TextBlock Text="Service name" Classes="formLabel"/>
+                            <TextBox Text="{Binding ServiceName}" PlaceholderText="ORCL"
+                                     Classes="ConnectionInput"/>
+                        </StackPanel>
+
+                        <StackPanel IsVisible="{Binding IsSqlServer}">
+                            <TextBlock Text="Authentication" Classes="formLabel" />
+                            <ComboBox ItemsSource="{Binding SqlServerAuthenticationOptions}"
+                                      SelectedItem="{Binding SqlServerAuth}"
+                                      Classes="connectionCombo" />
+                        </StackPanel>
+
+                        <StackPanel IsVisible="{Binding UsesCredentials}" Spacing="12">
+                            <StackPanel>
+                                <TextBlock Text="Username" Classes="formLabel"/>
+                                <TextBox Text="{Binding Username}" PlaceholderText="root"
+                                         Classes="connectionInput"/>
+                            </StackPanel>
+
+                            <StackPanel>
+                                <TextBlock Text="Password" Classes="formLabel"/>
+                                <TextBox Text="{Binding Password}" Classes="connectionInput"
+                                         PasswordChar="*" PlaceholderText="Password"/>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                        <CheckBox Content="Use SSL"
+                                  IsChecked="{Binding UseSsl}"
+                                  IsVisible="{Binding SupportSsl}"/>
+                    </StackPanel>
+
+                    <StackPanel IsVisible="{Binding IsSqlite}">
+                        <TextBlock Text="Database file" Classes="formLabel"/>
+
+                        <Grid ColumnDefinitions="*, Auto">
+                            <TextBox Text="{Binding Filepath}" Classes="connectionInput"
+                                     PlaceholderText="C:\database\app.db"
+                                     Margin="0,0,8,0"/>
+                            <Button Grid.Column="1" Content="Choose..."
+                                    Classes="dialogButton cancelButton"
+                                    Click=""/>
+                        </Grid>
+                    </StackPanel>
+
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               Foreground="#FF6B6B" FontSize="12"
+                               TextWrapping="Wrap" IsVisible="{Binding !!ErrorMessage}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="30,24,30,20" HorizontalAlignment="Right"
+                            Spacing="10">
+                    <Button Content="&lt; Back" Classes="dialogButton cancelButton"
+                            Command="{Binding BackCommand}"/>
+                    <Button Content="Cancel" Classes="dialogButton cancelButton" Click="CancelButton_Click"/>
+                    <Button Content="Connect" Classes="dialogButton nextButton"
+                            IsEnabled="{Binding CanConnect}"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>

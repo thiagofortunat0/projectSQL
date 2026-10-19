@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Avalonia.Media.Imaging;
 
 namespace SQLstudio.Models
 {
     public sealed record DatabaseOptions(
         string Id,
         string DisplayName,
-        string IconPath
+        Bitmap IconPath
         );
 }

@@ -269,7 +269,8 @@
         </MenuItem>
 
         <MenuItem Header="_Database">
-            <MenuItem Header="New Database Connection" InputGesture="Ctrl+Shift+N">
+            <MenuItem Header="New Database Connection" InputGesture="Ctrl+Shift+N"
+                      Click="OpenNewConnection_Click">
                 <MenuItem.Icon>
                     <Image Classes="menu-icon" Source="/Assets/Icons/barca.png" />
                 </MenuItem.Icon>

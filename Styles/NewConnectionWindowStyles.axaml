@@ -72,40 +72,174 @@
 
     <Style Selector="TabStrip.databaseFilters TabStripItem">
         <Setter Property="Height" Value="38" />
-        <Setter Property="Padding" Value="10,8"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="MinWidth" Value="64" />
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="Padding" Value="12,0"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground"   Value="#9DA5B1"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid RowDefinitions="*, 2">
-                    <ContentPresenter Content="{TemplateBinding Content}"
-                                      ContentTemplate="{TemplateBinding ContentTemplate}"
-                                      HorizontalContentAlignment="Center"
-                                      VerticalContentAlignment="Center"/>
+                    <Border x:Name="TabBackground"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
 
                     <Border x:Name="SelectionIndicator"
                             Grid.Row="1"
                             Background="Transparent"
-                            CornerRadius="2"/>
+                            CornerRadius="2,2,0,0"/>
+
+                    <Border x:Name="FocusIndicator"
+                            Grid.RowSpan="2"
+                            Margin="2"
+                            BorderThickness="1"
+                            BorderBrush="Transparent"
+                            CornerRadius="3"
+                            IsHitTestVisible="False"/>
                 </Grid>
             </ControlTemplate>
         </Setter>
     </Style>
 
-    <Style Selector="TabStrip.databaseFilters TabStripItem:pointer">
+    <Style Selector="TabStrip.databaseFilters TabStripItem:pointerover">
         <Setter Property="Foreground" Value="#E8E8E8"/>
+        <Setter Property="Background" Value="#292929" />
     </Style>
 
+    <Style Selector="TabStrip.databaseFilters TabStripItem:pressed">
+        <Setter Property="Background" Value="#303030" />
+    </Style>
 
-    <Style Selector="TabStrip.databaseFilters > TabStripItem:selected">
+    <Style Selector="TabStrip.databaseFilters TabStripItem:selected">
         <Setter Property="Foreground" Value="#FFFFFF"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
-    <Style Selector="TabStrip.databaseFilters > TabStripItem:selected /template/ Border#SelectionIndicator">
+    <Style Selector="TabStrip.databaseFilters TabStripItem:selected /template/ Border#SelectionIndicator">
         <Setter Property="Background" Value="#168FFF"/>
+    </Style>
+
+    <Style Selector="TabStrip.databaseFilters TabStripItem:focus-visible /template/ Border#FocusIndicator">
+        <Setter Property="BorderBrush" Value="#8BC5FF" />
+    </Style>
+
+    <Style Selector="ListBox.databaseGrid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style Selector="ListBox.databaseGrid ListBoxItem">
+        <Setter Property="Height" Value="112" />
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="#242424"/>
+        <Setter Property="BorderBrush" Value="#3A3A3A"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="CardBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalContentAlignment="Stretch"
+                                      VerticalContentAlignment="Stretch"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBox.databaseGrid ListBoxItem:pointerover">
+        <Setter Property="Background" Value="#2B2B2B"/>
+        <Setter Property="BorderBrush" Value="#505050"/>
+    </Style>
+
+    <Style Selector="ListBox.databaseGrid ListBoxItem:selected">
+        <Setter Property="Background" Value="#252A2F"/>
+        <Setter Property="BorderBrush" Value="#168FFF"/>
+        <Setter Property="BorderThickness" Value="2" />
+    </Style>
+
+    <Style Selector="ListBox.databaseGrid ListBoxItem:selected Border.selectionBadge">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+
+    <Style Selector="Button.dialogButton">
+        <Setter Property="MaxWidth" Value="105"/>
+        <Setter Property="Height" Value="27"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.cancelButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#D6D6D6"/>
+        <Setter Property="BorderBrush" Value="#4A4A4A"/>
+    </Style>
+
+    <Style Selector="Button.cancelButton:pointerover">
+        <Setter Property="Background" Value="#292929"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#626262"/>
+    </Style>
+
+    <Style Selector="Button.cancelButton:pressed">
+        <Setter Property="Background" Value="#333333"/>
+        <Setter Property="BorderBrush" Value="#737373"/>
+    </Style>
+
+    <Style Selector="Button.nextButton">
+        <Setter Property="Background" Value="#168FFF"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#168FFF"/>
+    </Style>
+
+    <Style Selector="Button.nextButton:pointerover">
+        <Setter Property="Background" Value="#319DFF"/>
+        <Setter Property="BorderBrush" Value="#319DFF"/>
+    </Style>
+
+    <Style Selector="Button.nextButton:pressed">
+        <Setter Property="Background" Value="#0876D8"/>
+        <Setter Property="BorderBrush" Value="#0876D8"/>
+    </Style>
+
+    <Style Selector="Button.dialogButton:focus-visible">
+        <Setter Property="BorderBrush" Value="#9DCEFF"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style Selector="Button.dialogButton:disabled">
+        <Setter Property="Opacity" Value="0.45"/>
+    </Style>
+
+    <Style Selector="Border.divider">
+        <Setter Property="Height" Value="1"/>
+        <Setter Property="Background" Value="#3A3A3A"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0,16"/>
     </Style>
 </Styles>
