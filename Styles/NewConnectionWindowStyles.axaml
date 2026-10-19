@@ -14,7 +14,7 @@
     </Style>
 
     <Style Selector="TextBlock.secondaryText">
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="12"/>
         <Setter Property="Margin" Value="0,5,0,0"/>
         <Setter Property="Foreground" Value="#9DA5B1" />
     </Style>
@@ -28,6 +28,13 @@
         <Setter Property="CornerRadius" Value="3" />
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="Margin" Value="0,13,0,0"/>
+    </Style>
+
+    <Style Selector="TextBox.connectionInput">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#3A3A3A"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="6"/>
     </Style>
 
     <Style Selector="TextBox.searchBox">

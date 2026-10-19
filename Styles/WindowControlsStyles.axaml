@@ -43,4 +43,6 @@
     <Style Selector="chrome|WindowDrawnDecorations /template/ StackPanel#PART_OverlayPanel Button:pressed /template/ ContentPresenter">
         <Setter Property="Background" Value="#3E3E42"/>
     </Style>
+
+
 </Styles>
