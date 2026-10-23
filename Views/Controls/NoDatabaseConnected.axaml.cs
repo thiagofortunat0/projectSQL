@@ -2,6 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using System.Collections.Generic;
+using SQLstudio.ViewModels;
 
 namespace SQLstudio.Views.Controls
 {
@@ -20,7 +22,16 @@ namespace SQLstudio.Views.Controls
 
             NewConnectionWindow modal = new();
 
-            await modal.ShowDialog(owner);
+            var databases = await modal.ShowDialog<List<string>?>(owner);
+            if(databases is null)
+            {
+                return;
+            }
+
+            if(owner.DataContext is MainViewModel mainViewModel)
+            {
+                mainViewModel.LoadDatabases(databases);
+            }
         }
     }
 }

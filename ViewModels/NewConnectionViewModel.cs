@@ -7,7 +7,12 @@ using System;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading;
 using CommunityToolkit.Mvvm.Input;
+using SQLstudio.Services;
+using MySqlConnector;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SQLstudio.ViewModels
 {
@@ -128,6 +133,11 @@ namespace SQLstudio.ViewModels
         [ObservableProperty]
         private string errorMessage = "";
 
+        [ObservableProperty]
+        private string connectionStatus = "";
+
+        public event Action<List<string>>? DatabasesLoaded;
+
         public bool IsSqlite => SelectedDatabase?.Id == "sqlite";
         public bool IsOracle => SelectedDatabase?.Id == "oracle";
         public bool IsSqlServer => SelectedDatabase?.Id == "sqlserver";
@@ -178,6 +188,45 @@ namespace SQLstudio.ViewModels
 
         public bool IsSelectingDatabase => CurrentStep == 0;
         public bool IsConfiguringConnection => CurrentStep == 1;
+
+        // Conexao com banco mysql
+        private readonly MySqlConnectionService _connectionService = new();
+
+        [RelayCommand]
+        private async Task ConnectAsync(CancellationToken cancellationToken)
+        {
+            if(SelectedDatabase?.Id != "mysql" || !IsHostConnection || !CanConnect)
+            {
+                ErrorMessage = "Erro";
+                return;
+            }
+
+            ErrorMessage = "";
+
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = Host,
+                Port = uint.Parse(Port),
+                Database = DatabaseName,
+                UserID = Username,
+                Password = Password,
+                ConnectionTimeout = 5
+            };
+
+            ConnectionStatus = "";
+
+            try
+            {
+                List<string> result = await _connectionService.ListDatabasesAsync(builder.ConnectionString, cancellationToken);
+                ConnectionStatus = string.Join(", ", result);
+                cancellationToken.ThrowIfCancellationRequested();
+                DatabasesLoaded?.Invoke(result);
+            }
+            catch (MySqlException ex)
+            {
+                ErrorMessage = $"Nao foi possivel conectar: {ex.Number}";
+            }
+        }
 
         public NewConnectionViewModel()
         {

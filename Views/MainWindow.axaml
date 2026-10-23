@@ -96,6 +96,9 @@
                              Foreground="White"
                              BorderBrush="#3A3A3A"
                              Background="#202020"/>
+
+                    <ListBox Grid.Row="2"
+                             ItemsSource="{Binding DatabasesNames}"/>
                 </Grid>
             </Border>
 

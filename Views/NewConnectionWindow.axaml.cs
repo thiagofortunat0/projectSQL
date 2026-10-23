@@ -12,7 +12,12 @@ namespace SQLstudio.Views
         {
             InitializeComponent();
 
-            DataContext = new NewConnectionViewModel();
+            var viewModel = new NewConnectionViewModel();
+
+            viewModel.DatabasesLoaded += databases => Close(databases);
+            Closed += (_, _) => viewModel.ConnectCommand.Cancel();
+
+            DataContext = viewModel;
         }
 
         public void CancelButton_Click(
